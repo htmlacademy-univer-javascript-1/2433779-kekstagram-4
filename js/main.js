@@ -81,5 +81,7 @@ const createPhotoDescription = () => ({
   comments: Array.from({length: getRandomInteger(0, 30)}, createComment),
 });
 
-const createPhotoDescriptionArray = Array.from({length: 25}, createPhotoDescription);
+const createPhotoDescriptionArray = () => Array.from({length: 25}, createPhotoDescription);
+
+
 
