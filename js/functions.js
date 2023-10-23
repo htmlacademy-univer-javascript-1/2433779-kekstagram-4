@@ -12,3 +12,14 @@ const checkPolydrome = (str) => {
   }
   return false;
 };
+
+const getStandardTime = (time) => {
+  const newTime = (time[0] === '0') ? time.substr(1).split(':') : time.split(':');
+  if (newTime[1][0] === '0' && newTime[1].length > 1) {
+    newTime[1] = newTime[1].substr(1);
+  }
+  return Number(newTime[0]*60) + Number(newTime[1]);
+};
+
+const getTime = (startTime, finishTime, meetingTime, duration) => (getStandardTime(startTime) <= getStandardTime(meetingTime)) && (getStandardTime(finishTime) >= (getStandardTime(meetingTime) + duration));
+
