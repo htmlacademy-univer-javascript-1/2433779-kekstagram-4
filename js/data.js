@@ -20,4 +20,6 @@ const createPhotoDescription = () => ({
   comments: Array.from({length: getRandomInteger(0, 30)}, createComment),
 });
 
-export {createPhotoDescription};
+const createPhotoDescriptionArray = () => Array.from({length: 25}, createPhotoDescription);
+
+export {createPhotoDescriptionArray};
