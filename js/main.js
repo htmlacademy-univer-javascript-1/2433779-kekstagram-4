@@ -1,3 +1,3 @@
-import {createPhotoDescription} from './data.js';
+import {renderThumbnails} from './thumbnails.js';
 
-const createPhotoDescriptionArray = () => Array.from({length: 25}, createPhotoDescription);
+renderThumbnails();
