@@ -1,3 +1,7 @@
+import {createPhotoDescriptionArray} from './data.js';
 import {renderThumbnails} from './thumbnails.js';
+import {openUserModalElement} from './fullSizeImage.js';
 
-renderThumbnails();
+const photoArray = createPhotoDescriptionArray();
+renderThumbnails(photoArray);
+openUserModalElement(photoArray);
