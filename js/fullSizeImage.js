@@ -2,18 +2,14 @@ import {isEscapeKey} from './util.js';
 
 const userModalElement = document.querySelector('.big-picture');
 const userModalCloseButton = userModalElement.querySelector('.big-picture__cancel');
-const userModalCommentCount = userModalElement.querySelector('.social__comment-count');
 const userModalCommentLoader = userModalElement.querySelector('.comments-loader');
 const body = document.querySelector('body');
 const comments = userModalElement.querySelector('.social__comments');
 const comment = userModalElement.querySelector('.social__comment');
+const currentCommentsCount = userModalElement.querySelector('.current-comments-count');
 
-const renderComments = (photo) => {
-  while (comments.firstChild) {
-    comments.firstChild.remove();
-  }
-
-  for (let i = 0; i < photo.comments.length; i++) {
+const appendCommentsToContainer = (photo, start, end) => {
+  for (let i = start; i < end; i++) {
     const nextComment = comment.cloneNode(true);
     nextComment.querySelector('img').src = photo.comments[i].avatar;
     nextComment.querySelector('img').alt = photo.comments[i].name;
@@ -22,8 +18,45 @@ const renderComments = (photo) => {
   }
 };
 
+const updateCommentsDisplay = (photo, start, end) => {
+  if (photo.comments.length <= end) {
+    currentCommentsCount.textContent = photo.comments.length;
+    userModalCommentLoader.classList.add('hidden');
+    appendCommentsToContainer(photo, start, photo.comments.length);
+  }
+  else {
+    currentCommentsCount.textContent = end;
+    appendCommentsToContainer(photo, start, end);
+  }
+};
+
+let currentClickHandler = null;
+
+const renderComments = (photo) => {
+  let start = 0;
+  let end = 5;
+  while (comments.firstChild) {
+    comments.firstChild.remove();
+  }
+
+  updateCommentsDisplay(photo, start, end);
+
+  if (currentClickHandler) {
+    userModalCommentLoader.removeEventListener('click', currentClickHandler);
+  }
+
+  currentClickHandler = () => {
+    start = end;
+    end += 5;
+    updateCommentsDisplay(photo, start, end);
+  };
+
+  userModalCommentLoader.addEventListener('click', currentClickHandler);
+};
+
 const openUserPicture = (photo) => {
   userModalElement.classList.remove('hidden');
+  userModalCommentLoader.classList.remove('hidden');
   userModalElement.querySelector('img').src = photo.url;
   userModalElement.querySelector('.social__caption').textContent = photo.description;
   userModalElement.querySelector('.likes-count').textContent = photo.likes;
@@ -31,8 +64,6 @@ const openUserPicture = (photo) => {
 
   renderComments(photo);
 
-  userModalCommentCount.classList.add('hidden');
-  userModalCommentLoader.classList.add('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
 };
