@@ -77,7 +77,8 @@ const closeUserPicture = () => {
 const openUserModalElement = (photoArray) => {
   const thumbnails = document.querySelectorAll('.picture__img');
   for (let i = 0; i < thumbnails.length; i++) {
-    thumbnails[i].addEventListener('click', () => {
+    thumbnails[i].addEventListener('click', (evt) => {
+      evt.preventDefault();
       openUserPicture(photoArray[i]);
     });
   }
