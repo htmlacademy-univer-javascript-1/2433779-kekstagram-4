@@ -1,6 +1,8 @@
 import {isEscapeKey} from './util.js';
 import {checkStringLength} from './functions.js';
 import {ErrorText, MAX_HASHTAG_COUNT, MAX_COMMENT_LENGTH} from './const.js';
+import {resetSize} from './imageSize.js';
+import {resetEffects} from './slider.js';
 
 const body = document.querySelector('body');
 const imageUploadForm = document.querySelector('.img-upload__form');
@@ -79,6 +81,8 @@ const validateForm = () => {
 
 const openImageUpload = () => {
   imageUpload.addEventListener('change', () => {
+    resetSize();
+    resetEffects();
     imageUploadOverlay.classList.remove('hidden');
     body.classList.add('modal-open');
     description.addEventListener('keydown', stopPropagationHandler);

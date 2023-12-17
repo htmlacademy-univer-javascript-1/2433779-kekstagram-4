@@ -50,5 +50,60 @@ const ErrorText = {
 
 const MAX_COMMENT_LENGTH = 140;
 const MAX_HASHTAG_COUNT = 5;
+const STEP = 25;
+const MAX_VALUE = 100;
+const MIN_VALUE = 25;
+const DEFAULT_VALUE = 100;
 
-export {MESSAGE, NAMES, DESCRIPTION, MAX_COMMENT_LENGTH, MAX_HASHTAG_COUNT, ErrorText};
+const EFFECTS = [
+  {
+    name: 'none',
+    style: 'none',
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: '',
+  },
+  {
+    name: 'chrome',
+    style: 'grayscale',
+    min: 0,
+    max: 1,
+    step: 0.1,
+    unit: '',
+  },
+  {
+    name: 'sepia',
+    style: 'sepia',
+    min: 0,
+    max: 1,
+    step: 0.1,
+    unit: '',
+  },
+  {
+    name: 'marvin',
+    style: 'invert',
+    min: 0,
+    max: 100,
+    step: 1,
+    unit: '%',
+  },
+  {
+    name: 'phobos',
+    style: 'blur',
+    min: 0,
+    max: 3,
+    step: 0.1,
+    unit: 'px',
+  },
+  {
+    name: 'heat',
+    style: 'brightness',
+    min: 1,
+    max: 3,
+    step: 0.1,
+    unit: '',
+  },
+];
+
+export {MESSAGE, NAMES, DESCRIPTION, MAX_COMMENT_LENGTH, MAX_HASHTAG_COUNT, ErrorText, STEP, MAX_VALUE, MIN_VALUE, DEFAULT_VALUE, EFFECTS};
