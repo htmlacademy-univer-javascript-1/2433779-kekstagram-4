@@ -41,4 +41,14 @@ const DESCRIPTION = [
   'Мир, окутанный тайной.',
 ];
 
-export {MESSAGE, NAMES, DESCRIPTION};
+const ErrorText = {
+  COMMENT_LENGTH: 'Максимум 140 символов',
+  TAG_UNIQUENESS: 'Хэш-теги повторяются',
+  TAG_QUANTITY: 'Превышено количество хэш-тегов',
+  TAG_INVALIDITY: 'Введён невалидный хэш-тег',
+};
+
+const MAX_COMMENT_LENGTH = 140;
+const MAX_HASHTAG_COUNT = 5;
+
+export {MESSAGE, NAMES, DESCRIPTION, MAX_COMMENT_LENGTH, MAX_HASHTAG_COUNT, ErrorText};

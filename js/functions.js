@@ -23,3 +23,4 @@ const getStandardTime = (time) => {
 
 const getTime = (startTime, finishTime, meetingTime, duration) => (getStandardTime(startTime) <= getStandardTime(meetingTime)) && (getStandardTime(finishTime) >= (getStandardTime(meetingTime) + duration));
 
+export {checkStringLength};
