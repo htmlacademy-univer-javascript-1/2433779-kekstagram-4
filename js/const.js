@@ -41,20 +41,6 @@ const DESCRIPTION = [
   'Мир, окутанный тайной.',
 ];
 
-const ErrorText = {
-  COMMENT_LENGTH: 'Максимум 140 символов',
-  TAG_UNIQUENESS: 'Хэш-теги повторяются',
-  TAG_QUANTITY: 'Превышено количество хэш-тегов',
-  TAG_INVALIDITY: 'Введён невалидный хэш-тег',
-};
-
-const MAX_COMMENT_LENGTH = 140;
-const MAX_HASHTAG_COUNT = 5;
-const STEP = 25;
-const MAX_VALUE = 100;
-const MIN_VALUE = 25;
-const DEFAULT_VALUE = 100;
-
 const EFFECTS = [
   {
     name: 'none',
@@ -106,4 +92,30 @@ const EFFECTS = [
   },
 ];
 
-export {MESSAGE, NAMES, DESCRIPTION, MAX_COMMENT_LENGTH, MAX_HASHTAG_COUNT, ErrorText, STEP, MAX_VALUE, MIN_VALUE, DEFAULT_VALUE, EFFECTS};
+const ErrorText = {
+  COMMENT_LENGTH: 'Максимум 140 символов',
+  TAG_UNIQUENESS: 'Хэш-теги повторяются',
+  TAG_QUANTITY: 'Превышено количество хэш-тегов',
+  TAG_INVALIDITY: 'Введён невалидный хэш-тег',
+  GET_DATA: 'Не удалось загрузить данные. Попробуйте обновить страницу',
+  SEND_DATA: 'Не удалось отправить форму. Попробуйте ещё раз'
+};
+
+const Route = {
+  GET_DATA: '/data',
+  SEND_DATA: '/',
+};
+const Method = {
+  GET: 'GET',
+  POST: 'POST',
+};
+const MAX_COMMENT_LENGTH = 140;
+const MAX_HASHTAG_COUNT = 5;
+const STEP = 25;
+const MAX_VALUE = 100;
+const MIN_VALUE = 25;
+const DEFAULT_VALUE = 100;
+const ALERT_SHOW_TIME = 5000;
+const BASE_URL = 'https://29.javascript.pages.academy/kekstagram';
+
+export {MESSAGE, NAMES, DESCRIPTION, MAX_COMMENT_LENGTH, MAX_HASHTAG_COUNT, ErrorText, Method, Route, STEP, MAX_VALUE, MIN_VALUE, DEFAULT_VALUE, EFFECTS, ALERT_SHOW_TIME, BASE_URL};
