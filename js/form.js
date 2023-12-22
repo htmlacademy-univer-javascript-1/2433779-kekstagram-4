@@ -3,6 +3,7 @@ import {resetSize} from './scale.js';
 import {resetEffects} from './slider.js';
 import {postData} from './api.js';
 import {pristine} from './validation.js';
+import {FILE_TYPES} from './const.js';
 
 const body = document.querySelector('body');
 const imageUploadForm = document.querySelector('.img-upload__form');
@@ -12,6 +13,7 @@ const hashtags = imageUploadForm.querySelector('.text__hashtags');
 const description = imageUploadForm.querySelector('.text__description');
 const closeButton = imageUploadForm.querySelector('.img-upload__cancel');
 const uploadButton = imageUploadForm.querySelector('.img-upload__submit');
+const imgDefaultElement = document.querySelector('.img-upload__preview img');
 
 const successUpload = document.querySelector('#success').content.cloneNode(true);
 body.append(successUpload);
@@ -99,6 +101,12 @@ const openImageUpload = () => {
   imageUpload.addEventListener('change', () => {
     resetSize();
     resetEffects();
+    const file = imageUpload.files[0];
+    const fileName = file.name.toLowerCase();
+    const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
+    if (matches) {
+      imgDefaultElement.src = URL.createObjectURL(file);
+    }
     imageUploadOverlay.classList.remove('hidden');
     body.classList.add('modal-open');
     description.addEventListener('keydown', stopPropagationHandler);
